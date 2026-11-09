@@ -10,6 +10,8 @@ services:
       MARIADB_PASSWORD: notes_pass
     volumes:
       - mariadb_data:/var/lib/mysql
+    networks:
+      - notes-net
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 5s
@@ -33,12 +35,18 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - notes-net
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:3000/health/', timeout=3)"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 20s
+
+networks:
+  notes-net:
+    name: notes-net
 
 volumes:
   mariadb_data:
