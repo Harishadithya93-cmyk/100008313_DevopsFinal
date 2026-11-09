@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: notes-db-pvc
+  namespace: notes
+  labels:
+    app: notes-db
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-db
+  namespace: notes
+  labels:
+    app: notes-db
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: notes-db
+  template:
+    metadata:
+      labels:
+        app: notes-db
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:11
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - secretRef:
+                name: notes-db-secret
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          readinessProbe:
+            exec:
+              command: ["healthcheck.sh", "--connect", "--innodb_initialized"]
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: notes-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notes-db
+  namespace: notes
+  labels:
+    app: notes-db
+spec:
+  type: ClusterIP
+  selector:
+    app: notes-db
+  ports:
+    - port: 3306
+      targetPort: 3306
