@@ -1,0 +1,198 @@
+{
+    "metrics": {
+        "http_reqs": {
+            "count": 35637,
+            "rate": 416.0108929243832
+        },
+        "http_req_failed": {
+            "fails": 35637,
+            "passes": 0,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_req_tls_handshaking": {
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0
+        },
+        "http_req_blocked": {
+            "p(95)": 1.6992661999999992,
+            "p(99)": 2.3871111199999993,
+            "max": 4.034542,
+            "avg": 0.2848735138479682,
+            "min": 0.020375,
+            "med": 0.056583,
+            "p(90)": 1.2201914
+        },
+        "http_req_connecting": {
+            "p(95)": 1.6743077999999998,
+            "p(99)": 2.3569319999999996,
+            "max": 4.021708,
+            "avg": 0.2701101365715386,
+            "min": 0.014917,
+            "med": 0.044417,
+            "p(90)": 1.1961168
+        },
+        "checks": {
+            "passes": 45819,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_waiting": {
+            "p(95)": 2501.9977679999997,
+            "p(99)": 2592.4457867200003,
+            "max": 2696.570626,
+            "avg": 895.7554079686546,
+            "min": 0.423792,
+            "med": 639.651459,
+            "p(90)": 2436.1920044
+        },
+        "data_received": {
+            "count": 73685841,
+            "rate": 860176.5723908894
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 895.8189987234928,
+            "min": 0.442584,
+            "med": 639.705791,
+            "p(90)": 2436.2953674,
+            "p(95)": 2502.0658507999997,
+            "p(99)": 2592.5366196,
+            "max": 2696.648917
+        },
+        "http_req_receiving": {
+            "p(95)": 0.09175819999999993,
+            "p(99)": 0.12554164,
+            "max": 58.727792,
+            "avg": 0.05723351898307993,
+            "min": 0.0065,
+            "med": 0.028917,
+            "p(90)": 0.07555840000000003
+        },
+        "http_req_sending": {
+            "avg": 0.006357235850380036,
+            "min": 0.001292,
+            "med": 0.004209,
+            "p(90)": 0.012625,
+            "p(95)": 0.017083,
+            "p(99)": 0.028443239999999988,
+            "max": 0.359292
+        },
+        "data_sent": {
+            "rate": 42477.37724283431,
+            "count": 3638766
+        },
+        "iteration_duration": {
+            "med": 5547.686086,
+            "p(90)": 17037.535715,
+            "p(95)": 18268.789488,
+            "p(99)": 18596.4696804,
+            "max": 18763.629843,
+            "avg": 7273.402290286208,
+            "min": 1005.025083
+        },
+        "vus": {
+            "value": 27,
+            "min": 27,
+            "max": 500
+        },
+        "iterations": {
+            "count": 5091,
+            "rate": 59.430127560626175
+        },
+        "vus_max": {
+            "value": 500,
+            "min": 500,
+            "max": 500
+        },
+        "http_req_duration": {
+            "med": 639.705791,
+            "p(90)": 2436.2953674,
+            "p(95)": 2502.0658507999997,
+            "p(99)": 2592.5366196,
+            "max": 2696.648917,
+            "avg": 895.8189987234928,
+            "min": 0.442584,
+            "thresholds": {
+                "p(95)<1000": true
+            }
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "health 200": {
+                    "path": "::health 200",
+                    "id": "8e4f90a842a57472549a6b2cf699032d",
+                    "passes": 5091,
+                    "fails": 0,
+                    "name": "health 200"
+                },
+                "create 201": {
+                    "name": "create 201",
+                    "path": "::create 201",
+                    "id": "156654209db568811cc0f7da2d599478",
+                    "passes": 5091,
+                    "fails": 0
+                },
+                "read one 200": {
+                    "name": "read one 200",
+                    "path": "::read one 200",
+                    "id": "6509b7e0662c8797beef9fcb51c912a2",
+                    "passes": 5091,
+                    "fails": 0
+                },
+                "title matches": {
+                    "name": "title matches",
+                    "path": "::title matches",
+                    "id": "2c6b6c95ab21350aec40d752abbe740a",
+                    "passes": 5091,
+                    "fails": 0
+                },
+                "update 200": {
+                    "passes": 5091,
+                    "fails": 0,
+                    "name": "update 200",
+                    "path": "::update 200",
+                    "id": "7ea104c1961d25326c0409f06885ea15"
+                },
+                "content updated": {
+                    "name": "content updated",
+                    "path": "::content updated",
+                    "id": "0c90507e94459cf6131857b6629db700",
+                    "passes": 5091,
+                    "fails": 0
+                },
+                "list 200": {
+                    "passes": 5091,
+                    "fails": 0,
+                    "name": "list 200",
+                    "path": "::list 200",
+                    "id": "bb957fc3b3b94304050fa1ff782f2f89"
+                },
+                "delete 200": {
+                    "fails": 0,
+                    "name": "delete 200",
+                    "path": "::delete 200",
+                    "id": "af4feca1c2c2f59fc45437b5fd44da76",
+                    "passes": 5091
+                },
+                "deleted note is 404": {
+                    "passes": 5091,
+                    "fails": 0,
+                    "name": "deleted note is 404",
+                    "path": "::deleted note is 404",
+                    "id": "09fbfa5cbcfbff0b72ca7376daae29c7"
+                }
+            }
+    }
+}
